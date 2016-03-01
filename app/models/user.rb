@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   	validates :phone, format: { with: /\(\d{3}\)\d{3}-\d{4}/},
   					  presence: true
 
+  has_many :products
 end
