@@ -10,8 +10,10 @@
 
 <p>
   <strong>User:</strong>
-  <%= @product.user.name %>
+  <%= @product.user.email %>
 </p>
+
+<%= image_tag @product.image.url, class: 'img-responsive' %>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
