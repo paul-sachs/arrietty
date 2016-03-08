@@ -1,1 +1,12 @@
 <%= image_tag 'arrietty.jpg', class: 'img-responsive' %>
+
+<div class='sign-in' style='float: right'>
+  <% if user_signed_in? %>
+    <%= link_to "Sign out", "/users/sign_out", class: 'btn', method: 'delete' %>
+  <% else %>
+    <%= link_to "Sign in", "/users/sign_in", class: 'btn' %>
+  <% end %>
+</div>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
