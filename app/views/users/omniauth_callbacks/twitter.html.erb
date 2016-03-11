@@ -1,0 +1,12 @@
+
+<h2> Provide an e-mail to complete sign-up </h2>
+<%= form_for @user, url: '/twitter_sign_up' do |f|%>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.hidden_field :provider %>
+  <%= f.hidden_field :uid %>
+
+  <%= f.submit "Join"%>
+<% end %>
