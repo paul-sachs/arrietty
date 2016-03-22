@@ -6,6 +6,9 @@ gem 'filepicker-rails'
 # Gem for non-heroku images upload
 gem 'paperclip'
 
+gem 'dotenv-rails'
+
+gem 'omniauth-twitter'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
