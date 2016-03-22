@@ -17,7 +17,7 @@
       <tr>
         <td><%= product.name %></td>
         <td><%= product.category.name %></td>
-        <td><%= image_tag product.image.url, class: 'img-responsive', height: '80%' %></td>
+        <td><%= image_tag product.image.url(:thumb) %></td>
         <td><%= product.user.email %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
