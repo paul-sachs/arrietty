@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :products
 
   get '/user_preferences' => 'users#preferences'
+  
+  resource :user, only: [:update]
 
   devise_scope :user do
     match '/twitter_sign_up' =>

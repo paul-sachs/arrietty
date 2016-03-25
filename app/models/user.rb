@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:twitter]
 
   has_many :products
+  has_one :user_location
 end
