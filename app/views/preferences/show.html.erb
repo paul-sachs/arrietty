@@ -16,12 +16,16 @@
   
   function locateMe() {
     navigator.geolocation.getCurrentPosition(function (pos) {
-      $.ajax('/users', {
+      $.ajax('/preferences', {
+          async: true,
           data: {
-            pos
-          }
-        }).then(function(result) {
-          $('#location').value(result);
+            position: pos
+          },
+          method: 'POST',
+          dataType: 'json'
+        })
+        .done(function(result) {
+          $('#location').val(result.address);
         });
     }, null, null);
   }
