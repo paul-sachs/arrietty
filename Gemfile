@@ -12,6 +12,10 @@ gem 'omniauth-twitter'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
+
+gem 'geokit'
+gem 'geokit-rails'
+
 gem 'email_validator'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
