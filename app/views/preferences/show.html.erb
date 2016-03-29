@@ -1,0 +1,56 @@
+<h1>Preferences</h1>
+
+
+<div><label>Email:</label>
+<%= @user.email %>
+</div>
+
+<div><label>Notifications:</label>
+
+<div class="checkbox">
+  <label>
+    <input type="checkbox" value="">
+    New message received
+  </label>
+</div>
+<div class="checkbox">
+  <label>
+    <input type="checkbox" value="">
+    Someone is interested in one of your items
+  </label>
+</div>
+</div>
+
+<div class="form-group">
+  <label for="aboutme">About Me:</label>
+  <textarea class="form-control" rows="5" id="aboutme"></textarea>
+
+  <button type="save" class="btn btn-primary">Save</button>
+</div>
+
+<div><label>Location:</label>
+<input type='text' id='location' placeholder='Where am I?'/>
+<button id='locateMeButton'>Locate me</button>
+</div>
+
+<script>
+  $(function () {
+    $('#locateMeButton').on('click', locateMe);
+  });
+  
+  function locateMe() {
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      $.ajax('/preferences', {
+          async: true,
+          data: {
+            position: pos
+          },
+          method: 'POST',
+          dataType: 'json'
+        })
+        .done(function(result) {
+          $('#location').val(result.address);
+        });
+    }, null, null);
+  }
+</script>
