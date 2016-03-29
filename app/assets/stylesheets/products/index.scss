@@ -1,0 +1,29 @@
+.product-card { 
+  display: block;
+  border-radius: 8px;
+  color: white;
+  width: 200px;
+  margin-bottom: 10px;
+  img {
+    width: 100%;
+  }
+  
+  .product-info-container {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    
+    .product-name {
+      background-color: rgba(80, 80, 80, 0.71);
+      color: white;
+      padding: 0px 5px;
+    }
+    
+    .product-price {
+      background-color: rgba(80, 80, 80, 0.71);
+      color: white;
+    }
+  }
+ 
+}
