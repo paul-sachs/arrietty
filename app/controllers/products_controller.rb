@@ -2,33 +2,28 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  # GET /products
-  # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.where.not(user_id: current_user.id)
 
     respond_to do |format|
       format.html
       format.json { render json: @products }
     end
   end
+  
+  def my_products
+    @products = current_user.products
 
-  # GET /products/1
-  # GET /products/1.json
-  def show
+    respond_to do |format|
+      format.html { render 'index' }
+      format.json { render json: @products }
+    end
   end
 
-  # GET /products/new
   def new
     @product = Product.new
   end
 
-  # GET /products/1/edit
-  def edit
-  end
-
-  # POST /products
-  # POST /products.json
   def create
     @product = current_user.products.build(product_params)
 
@@ -43,8 +38,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /products/1
-  # PATCH/PUT /products/1.json
   def update
     respond_to do |format|
       if @product.update(product_params)
@@ -57,8 +50,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  # DELETE /products/1
-  # DELETE /products/1.json
   def destroy
     @product.destroy
     respond_to do |format|
