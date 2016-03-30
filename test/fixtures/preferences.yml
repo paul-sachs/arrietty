@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  about_me: MyText
+  location: MyString
+  email: MyString
+  notification_message: false
+  notification_interest: false
+  user_id: 
+
+two:
+  about_me: MyText
+  location: MyString
+  email: MyString
+  notification_message: false
+  notification_interest: false
+  user_id: 

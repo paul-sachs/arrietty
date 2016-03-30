@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
   resources :products
-
-  get '/preferences' => 'preferences#show'
-  post '/preferences' => 'preferences#update'
+  resource :preference, path: :preferences
 
   devise_scope :user do
     match '/twitter_sign_up' =>
@@ -11,4 +9,6 @@ Rails.application.routes.draw do
   end
 
   root to: 'products#index'
+
+  get '/locate_me' => 'preferences#locate_me'
 end

@@ -1,32 +1,26 @@
 <h1>Preferences</h1>
 
-
+<%= form_for @user.preference, url: preference_path do |f| %>
 <div><label>Email:</label>
 <%= @user.email %>
 </div>
 
 <div><label>Notifications:</label>
 
-<div class="checkbox">
-  <label>
-    <input type="checkbox" value="">
-    New message received
-  </label>
-</div>
-<div class="checkbox">
-  <label>
-    <input type="checkbox" value="">
-    Someone is interested in one of your items
-  </label>
-</div>
-</div>
-
 <div class="form-group">
-  <label for="aboutme">About Me:</label>
-  <textarea class="form-control" rows="5" id="aboutme"></textarea>
-
-  <button type="save" class="btn btn-primary">Save</button>
+ <div>
+ <%= f.check_box :notification_message %>
+  <%= f.label :notification_message %>
+ </div>
+ <div>
+  <%= f.check_box :notification_interest %>
+  <%= f.label :notification_interest %>
 </div>
+<div>
+  <%= f.label :about_me %>:
+  <%= f.text_area :about_me, class: "form-control" %><br />
+</div>
+ 
 
 <div><label>Location:</label>
 <input type='text' id='location' placeholder='Where am I?'/>
@@ -38,14 +32,15 @@
     $('#locateMeButton').on('click', locateMe);
   });
   
-  function locateMe() {
+  function locateMe(event) {
+    event.preventDefault();
     navigator.geolocation.getCurrentPosition(function (pos) {
-      $.ajax('/preferences', {
+      $.ajax('/locate_me', {
           async: true,
           data: {
             position: pos
           },
-          method: 'POST',
+          method: 'GET',
           dataType: 'json'
         })
         .done(function(result) {
@@ -53,4 +48,8 @@
         });
     }, null, null);
   }
+
 </script>
+  <%= f.submit class: "btn btn-primary" %>
+</div>
+<% end %>

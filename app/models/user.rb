@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
 
   has_many :products
   has_one :user_location
+  has_one :preference
 end
