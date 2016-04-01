@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
-//= require masonry.pkgd.min
+//= require foundation
+$(document).foundation();
+$(function(){ $(document).foundation(); });
