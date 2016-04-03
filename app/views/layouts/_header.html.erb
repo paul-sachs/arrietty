@@ -1,17 +1,23 @@
-<%= image_tag 'arrietty.jpg', class: 'img-responsive' %>
+<%= link_to root_path do %>
+  <%= image_tag 'arrietty.jpg', class: 'img-responsive' %>
+<% end %>
 
-<div class="top-bar">
+<div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div class="top-bar" id="main-menu">
   <div class="top-bar-left">
     <ul class="menu">
-      <li class="menu-text">Arrietty</li>
       <li><input type="search" placeholder="Search"></li>
       <li><button type="button" class="button">Search</button></li>
     </ul>
   </div>
   <div class="top-bar-right">
     <ul class="dropdown menu" data-dropdown-menu>
-
       <% if user_signed_in? %>
+      <li><%= link_to "My Stuff", "/my_products" %></li>
       <li>
         <a href="#"><%=current_user.email%></a>
         <ul class="menu vertical">
