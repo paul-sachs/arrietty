@@ -26,3 +26,5 @@ en:
       preference:
         notification_message: Notify me when I receive a message.
         notification_interest: Notify me when someone is interested in my item(s).
+        about_me: 'About me:'
+        image: 'Profile Image:'

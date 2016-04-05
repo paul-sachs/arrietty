@@ -1,6 +1,14 @@
 <h1>Preferences</h1>
 
-<%= form_for @user.preference, url: preference_path do |f| %>
+
+<%= form_for @user.preference, html: { multipart: true }, url: preference_path do |f| %>
+
+<div class="field">
+   <%= f.label :image %><br>
+   <%= f.file_field :image, 'id'=>'image-input' %>
+   <%= image_tag @user.preference.image.url(:medium), 'id'=>'image-preview', 'class'=>'img-responsive' %>
+ </div>
+
 <div><label>Email:</label>
 <%= @user.email %>
 </div>
@@ -17,7 +25,7 @@
   <%= f.label :notification_interest %>
 </div>
 <div>
-  <%= f.label :about_me %>:
+  <%= f.label :about_me %>
   <%= f.text_area :about_me, class: "form-control" %><br />
 </div>
  

@@ -7,11 +7,13 @@ class PreferencesController < ApplicationController
   end
   
   def update
+    
+    current_user.preference.update(preference_params)
+
     respond_to do |format|
       format.html do
-         current_user.preference.update(preference_params)
          @user = current_user
-        render :show
+         render :show
       end
     end
   end
@@ -31,6 +33,6 @@ class PreferencesController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def preference_params
-      params.require(:preference).permit(:about_me, :notification_message, :notification_interest)
+      params.require(:preference).permit(:about_me, :notification_message, :notification_interest, :image)
     end
 end
