@@ -4,58 +4,46 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.where.not(user_id: current_user.id)
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @products }
-    end
   end
   
   def my_products
     @products = current_user.products
-
-    respond_to do |format|
-      format.html { render 'index' }
-      format.json { render json: @products }
-    end
   end
 
   def new
     @product = Product.new
+    render :layout => false
   end
 
   def create
     @product = current_user.products.build(product_params)
 
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    if @product.save
+      redirect_to @product, notice: 'product was successfully created.'
+    else
+      render :new, :layout => false
     end
   end
 
   def update
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
-      else
-        format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    if @product.update(product_params)
+      redirect_to @product, notice: 'product was successfully updated.'
+    else
+      render :edit, :layout => false
     end
   end
 
   def destroy
     @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: 'product was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to products_url, notice: 'product was successfully destroyed.'
+  end
+  
+  def show 
+    render :layout => false
+  end
+  
+  def edit 
+    render :layout => false
   end
 
   private

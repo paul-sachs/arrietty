@@ -1,6 +1,10 @@
-<h1>Editing Product</h1>
+<div class='product-details'>
 
-<%= render 'form' %>
+  <%= render 'form', locals: { return_to_product: true } %>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+</div>
+
+<button class="close-button" data-close aria-label="Close modal" type="button">
+  <span aria-hidden="true">&times;</span>
+</button>
+

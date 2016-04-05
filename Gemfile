@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'foundation-icons-sass-rails'
+
 # Gem for filpicker
 gem 'filepicker-rails'
 

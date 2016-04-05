@@ -1,20 +1,2 @@
-<%= javascript_include_tag "masonry.pkgd.min" %>
-<%= stylesheet_link_tag "products", media: "all" %>
+<%= render 'grid' %>
 
-<div class="grid" data-masonry='{ "itemSelector": ".grid-item", "gutter": 10}'>
-  <% @products.each do |product| %>
-    <div class="grid-item">
-    <%= link_to(product) do %>
-      <div class="product-card">
-        <div class="product-info-container">
-          <div class="product-name"><%= product.name %></div>
-          <div class="product-price">$<%= product.price %>/day</div>
-        </div>
-        <%= image_tag product.image.url(:thumb) %>
-      </div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-
-<%= link_to 'New product', new_product_path %>

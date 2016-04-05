@@ -13,5 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-$(document).foundation();
-$(function(){ $(document).foundation(); });
+
+$(function(){ 
+  $(document).foundation(); 
+  $(document).on("ajax:success", '.product-dialog-submit', load_product_dialog);
+});
+
+  
+function load_product_dialog(e, data, status, xhr) {
+  event.preventDefault();
+  $('#product-details').html(data);
+  $('#product-details').foundation('open');
+}
