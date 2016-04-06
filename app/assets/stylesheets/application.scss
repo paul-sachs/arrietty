@@ -10,3 +10,10 @@ body {
 .content {
   padding: 0px 0.5em;
 }
+
+.notification {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  z-index: 4000;
+}

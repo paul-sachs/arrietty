@@ -19,5 +19,20 @@
   <div class='content'>
     <%= yield %>
   </div>
+  <% if notice %>
+    <div class='callout notification success' data-closable>
+      <%= notice %>
+      <button class='close-button' aria-label='Dismiss alert' type='button' data-close>
+        <span aria-hidden='true'>&times;</span>
+      </button>
+     </div>
+  <% elsif alert %>
+    <div class='callout notification alert' data-closable>
+      <%= alert %>
+      <button class='close-button' aria-label='Dismiss alert' type='button' data-close>
+        <span aria-hidden='true'>&times;</span>
+      </button>
+     </div>
+  <% end %>
   </body>
 </html>

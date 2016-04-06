@@ -19,7 +19,8 @@ class ProductsController < ApplicationController
     @product = current_user.products.build(product_params)
 
     if @product.save
-      redirect_to @product, notice: 'product was successfully created.'
+      flash[:success] = 'product was successfully created.'
+      render :show, :layout => false 
     else
       render :new, :layout => false
     end
@@ -27,7 +28,8 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to @product, notice: 'product was successfully updated.'
+      flash[:success] = 'product was successfully updated.'
+      render :show, :layout => false 
     else
       render :edit, :layout => false
     end
