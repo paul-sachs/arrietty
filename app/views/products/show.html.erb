@@ -9,9 +9,11 @@
 
   <%= image_tag @product.image.url(:medium) %>
   
+  <% if current_user.owns? @product %>
   <div class='actions float-right'>
     <%= link_to 'Edit', edit_product_path(@product), remote: true, class: 'product-dialog-submit button'%>
   </div>
+  <% end %>
 
 </div>
 

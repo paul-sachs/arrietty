@@ -9,4 +9,9 @@ class User < ActiveRecord::Base
   has_one :user_location
   has_one :preference
   after_create :create_preference
+  
+  def owns?(product)
+    products.include? product
+  end
+  
 end

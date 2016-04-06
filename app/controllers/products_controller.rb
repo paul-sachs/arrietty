@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :check_edit_permission!, only: [:edit, :update]
 
   def index
     @products = Product.where.not(user_id: current_user.id)
@@ -57,5 +58,12 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:name, :category_id, :price, :image)
+    end
+    
+    def check_edit_permission!
+      if not current_user.owns? @product
+        flash[:alert] = 'Cannot edit product'
+        redirect_to root_path
+      end
     end
 end
