@@ -57,6 +57,19 @@
     }, null, null);
   }
 
+$(function() {
+    $('#image-input').on('change', function(event) {
+      var files = event.target.files;
+      var image = files[0]
+      var reader = new FileReader();
+      reader.onload = function(file) {
+        $('#image-preview').attr('src',file.target.result);
+      }
+      reader.readAsDataURL(image);
+      console.log(files);
+    });
+  });
+
 </script>
   <%= f.submit class: "btn btn-primary" %>
 </div>
