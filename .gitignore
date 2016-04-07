@@ -17,6 +17,6 @@
 /log/*
 !/log/.keep
 /tmp
-public
+public/system
 
 .byebug_history

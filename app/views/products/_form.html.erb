@@ -29,6 +29,11 @@
     <%= f.text_field :price %>
   </div>
 
+  <div>
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "form-control" %><br />
+  </div>
+
   <div class='actions float-right'>
     
     <%= f.submit :class =>'success button', remote: true%>
