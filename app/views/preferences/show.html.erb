@@ -4,9 +4,9 @@
 <%= form_for @user.preference, html: { multipart: true }, url: preference_path do |f| %>
 
 <div class="field">
-   <%= f.label :image %><br>
-   <%= f.file_field :image, 'id'=>'image-input' %>
-   <%= image_tag @user.preference.image.url(:medium), 'id'=>'image-preview', 'class'=>'img-responsive' %>
+   <%= f.label :image, class: 'button' %>
+   <%= f.file_field :image, 'class'=>'show-for-sr' %>
+   <%= image_tag @user.preference.image.url(:medium), 'id'=>'image-preview'%>
  </div>
 
 <div><label>Email:</label>
@@ -31,14 +31,21 @@
  
 
 <div class="input-group">
-  <span class="input-group-label" id="location">Location:</span>
-  <input class="input-group-field" type="text">
+  <span class="input-group-label" >Location:</span>
+  <input id="location" class="input-group-field" type="text">
   <div class="input-group-button">
-    <input id='locateMeButton' type="button" class="button" value="Locate Me">
+    <input id='locateMeButton' type="button" class="button" value="Locate Me"/>
+    <div id='loader' type="button" class='button hidden'>
+      <div>
+        <span class='fi-loop medium'></span>
+      </div>
+    </div>
   </div>
 
 
 </div>
+
+        
 
 <script>
   $(function () {
@@ -47,6 +54,8 @@
   
   function locateMe(event) {
     event.preventDefault();
+    $('#loader').removeClass('hidden').addClass('loading');
+    $('#locateMeButton').addClass('hidden');
     navigator.geolocation.getCurrentPosition(function (pos) {
       $.ajax('/locate_me', {
           async: true,
@@ -58,12 +67,14 @@
         })
         .done(function(result) {
           $('#location').val(result.address);
+          $('#loader').addClass('hidden').removeClass('loading');
+          $('#locateMeButton').removeClass('hidden');
         });
     }, null, null);
   }
 
 $(function() {
-    $('#image-input').on('change', function(event) {
+    $('#preference_image').on('change', function(event) {
       var files = event.target.files;
       var image = files[0]
       var reader = new FileReader();

@@ -1,5 +1,6 @@
 @import "foundation_and_overrides";
 @import 'foundation-icons';
+
 /* Add imports of custom sass/scss files here */
 
 body {
@@ -16,4 +17,37 @@ body {
   top: 0px;
   width: 100%;
   z-index: 4000;
+}
+
+.large {
+  font-size: 50px;
+  line-height: 50px;
+}
+
+.medium {
+  font-size: 35px;
+  padding: 0 5px;
+}
+
+.small {
+  font-size: 20px;
+  padding: 0 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+#loader {
+  padding: 0px;
+  margin: 0px;
+  width: 99px;
+}
+
+.loading > div
+{
+  @include mui-animation(spin(in, 360deg));
+  animation-duration:         1.2s; 
+  animation-iteration-count:  infinite;
+  transition-timing-function: ease-in;
 }
