@@ -9,6 +9,11 @@
    <%= image_tag @user.preference.image.url(:medium), 'id'=>'image-preview'%>
  </div>
 
+<div class="input-group">
+  <%= f.label :display_name, class: 'input-group-label' %>
+  <%= f.text_field :display_name, class: 'input-group-field' %>
+</div>
+
 <div><label>Email:</label>
 <%= @user.email %>
 </div>
@@ -87,6 +92,6 @@ $(function() {
   });
 
 </script>
-  <%= f.submit class: "btn btn-primary" %>
+  <%= f.submit class: "button" %>
 </div>
 <% end %>

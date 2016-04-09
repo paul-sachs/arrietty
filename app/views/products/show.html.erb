@@ -8,7 +8,7 @@
   <h1>
     <%= @product.name %>
   </h1>
-  <div><small>Owner: <%= @product.user.email %></small><div>
+  <div><small>Owner: <%= @product.user.display_name %></small><div>
   <div class='actions float-right'>
     <%= link_to 'Contact Owner', contact_owner_form_path(@product), class: 'button'%>
   </div>

@@ -19,7 +19,13 @@
       <% if user_signed_in? %>
       <li><%= link_to "My Stuff", "/my_products" %></li>
       <li>
-        <a href="#"><%=current_user.email%></a>
+
+
+
+        <a href="#" id='profile-link'>
+          <%= image_tag current_user.preference.image.url(:small)%>
+          <%=current_user.display_name%>
+        </a>
         <ul class="menu vertical">
           <li> <%= link_to "/preferences" do%> 
             <span class='fi-torso'/> 

@@ -33,6 +33,6 @@ class PreferencesController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def preference_params
-      params.require(:preference).permit(:about_me, :notification_message, :notification_interest, :image)
+      params.require(:preference).permit(:about_me, :notification_message, :notification_interest, :image, :display_name)
     end
 end

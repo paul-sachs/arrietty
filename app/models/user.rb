@@ -13,5 +13,9 @@ class User < ActiveRecord::Base
   def owns?(product)
     products.include? product
   end
+
+  def display_name 
+    preference.display_name
+  end
   
 end
