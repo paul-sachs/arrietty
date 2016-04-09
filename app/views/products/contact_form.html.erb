@@ -1,0 +1,8 @@
+<%= form_tag(contact_owner_path(@product), method: "post") do %>
+ <div><small>To: <%= @product.user.email %></small><div>
+  <%= label_tag(:subject, "Subject") %>
+  <%= text_field_tag(:subject) %>
+  <%= label_tag(:body, "Body") %>
+  <%= text_area_tag(:body) %>
+  <%= submit_tag("Send", class: 'button') %>
+<% end %>

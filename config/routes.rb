@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
   resources :products
+  get '/products/:id/contact_form', to: 'products#contact_form', as: 'contact_owner_form'
+  post '/products/:id/contact', to: 'products#contact' , as: 'contact_owner'
 
   resource :preference, path: :preferences
 

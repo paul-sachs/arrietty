@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :contact_form, :contact]
   before_action :authenticate_user!
   before_action :check_edit_permission!, only: [:edit, :update]
 
@@ -9,6 +9,16 @@ class ProductsController < ApplicationController
   
   def my_products
     @products = current_user.products
+  end
+
+  
+  def contact
+    ProductMailer.contact_email(@product, params[:body]).deliver_now
+
+    flash[:notice] = "Request Sent!"
+
+    #TODO: This should redirect to the product
+    redirect_to root_path
   end
 
   def new

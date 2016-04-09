@@ -1,14 +1,24 @@
 <div class='product-details'>
   <span class='categories float-right'>
-    <span class='category label'><%= @product.category.name %></span>
+    <% if @product.category != nil %>
+    <span class='category label'><%=@product.category.name%></span>
+    <% end %>
   </span>
+  <div class="product-price">$<%= @product.price %>/day</div>
   <h1>
     <%= @product.name %>
   </h1>
   <div><small>Owner: <%= @product.user.email %></small><div>
+  <div class='actions float-right'>
+    <%= link_to 'Contact Owner', contact_owner_form_path(@product), class: 'button'%>
+  </div>
 
   <%= image_tag @product.image.url(:medium) %>
   
+  <div>
+    <%= @product.description %>
+  </div>
+
   <% if current_user.owns? @product %>
   <div class='actions float-right'>
     <%= link_to 'Edit', edit_product_path(@product), remote: true, class: 'product-dialog-submit button'%>

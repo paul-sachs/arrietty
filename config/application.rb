@@ -25,5 +25,14 @@ module Arrietty
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.filepicker_rails.api_key = ENV['FILEPICKER_API_KEY']
+
+    config.action_mailer.smtp_settings = {
+      address: "smtp.mailgun.org",
+      port: 587, # ports 587 and 2525 are also supported with STARTTLS
+      enable_starttls_auto: true, # detects and uses STARTTLS
+      user_name: ENV['SMTP_USERNAME'],
+      password: ENV['SMTP_PASSWORD'], # SMTP password is any valid API key
+      authentication: 'login', # Mailgun supports 'plain' or 'login'
+    }
   end
 end
