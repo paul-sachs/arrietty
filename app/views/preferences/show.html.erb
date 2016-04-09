@@ -36,8 +36,8 @@
  
 
 <div class="input-group">
-  <span class="input-group-label" >Location:</span>
-  <input id="location" class="input-group-field" type="text">
+  <%= f.label :location, class: 'input-group-label' %>
+  <%= f.text_field :location, class: 'input-group-field' %>
   <div class="input-group-button">
     <input id='locateMeButton' type="button" class="button" value="Locate Me"/>
     <div id='loader' type="button" class='button hidden'>
@@ -71,7 +71,8 @@
           dataType: 'json'
         })
         .done(function(result) {
-          $('#location').val(result.address);
+          $('#preference_location').val(result.country+", "+result.city+", "+result.neighborhood);
+        }).always(function(){
           $('#loader').addClass('hidden').removeClass('loading');
           $('#locateMeButton').removeClass('hidden');
         });

@@ -25,7 +25,13 @@ class PreferencesController < ApplicationController
         latitude = position[:latitude]
         longitude = position[:longitude]
         position_string = "#{latitude},#{longitude}"
-        render json: {"address" => GoogleGeocoder.reverse_geocode(position_string).full_address}
+        location = GoogleGeocoder.reverse_geocode(position_string)
+        render json: {
+          "address" => location.full_address,
+          "neighborhood" => location.neighborhood,
+          "country" => location.country,
+          "city" => location.city
+        }
       }
     end
   end
@@ -33,6 +39,7 @@ class PreferencesController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def preference_params
-      params.require(:preference).permit(:about_me, :notification_message, :notification_interest, :image, :display_name)
+      params.require(:preference).permit(:about_me, :notification_message, 
+          :notification_interest, :image, :display_name, :location)
     end
 end
