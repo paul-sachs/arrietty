@@ -1,42 +1,46 @@
 <%= link_to root_path do %>
-  <%= image_tag 'arrietty.jpg', class: 'img-responsive' %>
+  <%= image_tag 'arrietty.jpg', class: 'img-responsive header-logo' %>
 <% end %>
+
 
 <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
   <button class="menu-icon" type="button" data-toggle></button>
   <div class="title-bar-title">Menu</div>
 </div>
+</div>
 
-<div class="top-bar" id="main-menu">
-  <div class="top-bar-left">
-    <ul class="menu">
-      <li><input type="search" placeholder="Search for items"></li>
-      <li><button type="button" class="button hollow">Search</button></li>
-    </ul>
-  </div>
-  <div class="top-bar-right">
-    <ul class="dropdown menu" data-dropdown-menu>
-      <% if user_signed_in? %>
-      <li><%= link_to "My Stuff", "/my_products" %></li>
-      <li>
+<div id="anchor"></div>
 
-
-
-        <a href="#" id='profile-link'>
-          <%= image_tag current_user.preference.image.url(:small)%>
-          <%=current_user.display_name%>
-        </a>
-        <ul class="menu vertical">
-          <li> <%= link_to "/preferences" do%> 
-            <span class='fi-torso'/> 
-            Preferences
-          <% end %></li>
-          <li><%= link_to "Sign out", "/users/sign_out", method: 'delete' %></li>
-        </ul>
-      </li>
-      <% else %>
-        <li><%= link_to "Sign in", "/users/sign_in", class: 'nav navbar-nav navbar-right' %></li>
-      <% end %>  
-    </ul>
+<div data-sticky-container>
+<div class="top-bar stick" style="right: 0; left: 0; top: 0;">
+    <div class="top-bar-left">
+      <ul class="menu">
+        <li><input type="search" placeholder="Search for items"></li>
+        <li><button type="button" class="button hollow">Search</button></li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <% if user_signed_in? %>
+        <li><%= link_to "My Stuff", "/my_products" %></li>
+        <li>
+      
+         <a href="#" id='profile-link'>
+            <%= image_tag current_user.preference.image.url(:small)%>
+            <%=current_user.display_name%>
+          </a>
+          <ul class="menu vertical">
+            <li> <%= link_to "/preferences" do%> 
+              <span class='fi-torso'/> 
+              Preferences
+            <% end %></li>
+            <li><%= link_to "Sign out", "/users/sign_out", method: 'delete' %></li>
+          </ul>
+        </li>
+        <% else %>
+          <li><%= link_to "Sign in", "/users/sign_in", class: 'nav navbar-nav navbar-right' %></li>
+        <% end %>  
+      </ul>
+    </div>
   </div>
 </div>

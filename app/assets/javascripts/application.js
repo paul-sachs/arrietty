@@ -16,7 +16,16 @@
 
 
 $(function(){ 
-  $(document).foundation(); 
+  $(document).foundation()
+ 
+  $(window).on('scroll', function() {
+    if ($(window).scrollTop() > $('.header-logo').height()) {
+      $('.stick').css('position', 'fixed')
+    } else {
+      $('.stick').css('position', 'relative')
+    }
+  });
+
   $(document).on("ajax:success ajax:error", function(e, data, status, xhr) {
     var msg = xhr.getResponseHeader('X-Message');
     if (msg) {
