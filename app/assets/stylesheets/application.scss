@@ -4,13 +4,16 @@
 
 /* Add imports of custom sass/scss files here */
 
+li.is-dropdown-submenu-parent.opens-right > ul {
+  z-index: 10;
+}
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 100;
 }
 
 .content {
-  padding: 0.5em 0.5em 2em 0.5em;
+  padding: 0.5em 0.5em 2em 1.5em;
 }
 
 .notification {

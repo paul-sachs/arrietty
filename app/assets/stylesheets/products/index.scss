@@ -1,7 +1,7 @@
 .grid-sizer,
 .grid-item { width: 23%; min-width: 350px;}
 
-.product-card { 
+.product-card {  
   display: block;
   position: relative;
   border-radius: 8px;
@@ -12,6 +12,10 @@
   
   img {
     width: 100%;
+    -webkit-filter: contrast(80%);
+    filter: contrast(80%);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
   }
 
   &:hover {
@@ -22,7 +26,14 @@
     transform: scale(1.1);
     -webkit-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
-    z-index: 100000;
+    z-index: 30;
+    
+    img {
+      -webkit-filter: contrast(110%);
+      filter: contrast(110%);
+      -webkit-transition: .3s ease-in-out;
+      transition: .3s ease-in-out;
+    }
   }
 
   
@@ -31,6 +42,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    z-index: 1;
     
     .product-name {
       background-color: rgba(80, 80, 80, 0.71);

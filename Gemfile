@@ -27,6 +27,8 @@ gem 'pry'
 
 gem 'rails_12factor'
 
+gem 'jquery-form-rails'
+
 group :development do
   gem 'sqlite3'
 end

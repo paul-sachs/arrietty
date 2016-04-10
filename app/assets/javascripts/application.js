@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-
+//= require jquery.form
 
 $(function(){ 
   $(document).foundation()
@@ -62,7 +62,7 @@ function notification_class(type){
 }
 
   
-function load_product_dialog(e, data, status, xhr) {
+function load_product_dialog(event, data, status, xhr) {
   event.preventDefault();
   $('#product-details').html(data);
   $('#product-details').foundation('open');
