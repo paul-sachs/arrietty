@@ -21,6 +21,11 @@
     <div class="top-bar-right">
       <ul class="dropdown menu" data-dropdown-menu>
         <% if user_signed_in? %>
+        <li>
+        <%= link_to new_product_path, remote: true, id: 'add-product-link', class: 'product-dialog-submit'  do %>
+          <i class="fi-plus" id="header-icon"></i>
+        <% end %>
+        </li>
         <li><%= link_to "My Stuff", "/my_products" %></li>
         <li>
       
