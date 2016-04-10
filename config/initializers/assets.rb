@@ -12,3 +12,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( masonry.pkgd.min.js )
 Rails.application.config.assets.precompile += %w( products/index.css )
 Rails.application.config.assets.precompile += %w( jquery.dotdotdot.min.js )
+Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
