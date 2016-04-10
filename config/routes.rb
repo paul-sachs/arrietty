@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resource :preference, path: :preferences
 
   get '/my_products' => 'products#my_products'
-
+  
   devise_scope :user do
     match '/twitter_sign_up' =>
         'users/omniauth_callbacks#twitter_submit', via: [:post, :patch]

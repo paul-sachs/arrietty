@@ -1,34 +1,42 @@
 <%= javascript_include_tag "masonry.pkgd.min" %>
 <%= stylesheet_link_tag "products", media: "all" %>
 
-<div class="grid">
-  <% @products.each do |product| %>
-    <div class="grid-sizer"></div>
-    <div class="grid-item">
-    <%= link_to product, remote: true, class: 'product-dialog-submit' do %>
-      <div class="product-card">
-        <div class="product-info-container">
-          <div class="product-name"><%= product.name %></div>
-          <i class="product-status <%= status_icon_classes(product)%>"></i>
+<% if @products.count == 0 %>
+  <div class="empty-grid">
+    No items found. Search again or add some items.
+  </div>
+<% else %>
+
+  <div class="grid">
+    <% @products.each do |product| %>
+      <div class="grid-sizer"></div>
+      <div class="grid-item">
+      <%= link_to product, remote: true, class: 'product-dialog-submit' do %>
+        <div class="product-card">
+          <div class="product-info-container">
+            <div class="product-name"><%= product.name %></div>
+            <i class="product-status <%= status_icon_classes(product)%>"></i>
+          </div>
+          <%= image_tag product.image.url(:medium) %>
         </div>
-        <%= image_tag product.image.url(:medium) %>
+      <% end %>
       </div>
-     <% end %>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-<div class="reveal" id="product-details" data-reveal>
-</div>
+  <div class="reveal" id="product-details" data-reveal>
+  </div>
 
-<script>
-  $(function() {
-    $grid = $(".grid").masonry({
-      itemSelector: ".grid-item", 
-      gutter: 10, 
-      columnWidth: ".grid-sizer", 
-      percentPosition: true
+  <script>
+    $(function() {
+      $grid = $(".grid").masonry({
+        itemSelector: ".grid-item", 
+        gutter: 10, 
+        columnWidth: ".grid-sizer", 
+        percentPosition: true
+      });
+      $grid.masonry('layout');
     });
-    $grid.masonry('layout');
-  });
-</script>
+  </script>
+
+<% end %>

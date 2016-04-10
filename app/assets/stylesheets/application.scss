@@ -10,10 +10,15 @@ li.is-dropdown-submenu-parent.opens-right > ul {
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 100;
+  display: flex;
+  flex-direction: column;
 }
 
 .content {
   padding: 0.5em 0.5em 2em 1.5em;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
 }
 
 .notification {
@@ -95,4 +100,16 @@ i.warning {
     width: 250px;
     max-width: 100%;
   }
+}
+
+.profile-parent-menu {
+  position: relative;
+  z-index: 30;
+}
+
+.empty-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 2;
 }

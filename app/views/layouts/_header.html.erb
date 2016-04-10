@@ -13,10 +13,14 @@
 <div data-sticky-container>
   <div class="top-bar stick" style="right: 0; left: 0; top: 0;" id="main-menu">
     <div class="top-bar-left">
-      <ul class="menu">
-        <li><input type="search" placeholder="Search for items"></li>
-        <li><button type="button" class="button hollow">Search</button></li>
-      </ul>
+      
+        <%= form_tag root_path, method: "GET" do%>
+          <ul class="menu">
+            <li><%= text_field_tag :q, params[:q], placeholder: 'Search for items', type: 'search' %></li>
+            <li><%= submit_tag "Search", class: "button hollow" %></li>
+          </ul>
+        <% end %>
+      
     </div>
     <div class="top-bar-right">
       <ul class="dropdown menu" data-dropdown-menu>
@@ -27,7 +31,7 @@
         <% end %>
         </li>
         <li><%= link_to "My Stuff", "/my_products" %></li>
-        <li>
+        <li class='profile-parent-menu'>
       
          <a href="#" id='profile-link'>
             <%= image_tag current_user.preference.image.url(:small)%>

@@ -6,4 +6,14 @@ class Product < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
    
   enum status: [ :unavailable, :available, :rented]
+  
+  def self.not_owned_by(user) 
+    Product.where.not(user_id: user.id)
+  end
+  
+  def self.contains?(value)
+    where("lower(name) LIKE ? OR lower(description) LIKE ?",
+          "%#{value.downcase}%",
+          "%#{value.downcase}%")
+  end
 end

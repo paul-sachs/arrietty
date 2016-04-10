@@ -4,11 +4,18 @@ class ProductsController < ApplicationController
   before_action :check_edit_permission!, only: [:edit, :update]
 
   def index
-    @products = Product.where.not(user_id: current_user.id)
+    @products = Product.not_owned_by(current_user)
+    if params[:q]
+      @products = @products.contains?(params[:q])
+    end
   end
   
   def my_products
     @products = current_user.products
+  end
+  
+  def search
+    @products = Product.all
   end
 
   
