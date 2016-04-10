@@ -7,6 +7,17 @@
   img {
     width: 100%;
   }
+
+  &:hover {
+  -moz-box-shadow: 0 0 20px #6897bb; 
+  -webkit-box-shadow: 0 0 20px #6897bb; 
+  box-shadow: 0 0 20px #6897bb; 
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  }
+
   
   .product-info-container {
     position: absolute;
