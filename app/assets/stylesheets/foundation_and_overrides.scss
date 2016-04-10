@@ -8,6 +8,7 @@
 @import 'motion-ui/motion-ui';
 
 // We include everything by default.  To slim your CSS, remove components you don't use.
+$label-radius: 1em;
 
 @include foundation-flex-classes;
 @include foundation-flex-grid;

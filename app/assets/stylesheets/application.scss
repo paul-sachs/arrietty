@@ -1,3 +1,4 @@
+
 @import "foundation_and_overrides";
 @import 'foundation-icons';
 
@@ -9,7 +10,7 @@ body {
 }
 
 .content {
-  padding: 0px 0.5em 2em 0.5em;
+  padding: 0.5em 0.5em 2em 0.5em;
 }
 
 .notification {
@@ -55,4 +56,16 @@ body {
 #profile-link {
   padding-top: 0px;
   padding-bottom: 0px; 
+}
+
+i.success {
+  color: map-get($foundation-palette, success);
+}
+
+i.alert {
+  color: map-get($foundation-palette, alert);
+}
+
+i.warning {
+  color: map-get($foundation-palette, warning);
 }

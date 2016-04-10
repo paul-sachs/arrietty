@@ -1,9 +1,14 @@
+.grid-sizer,
+.grid-item { width: 23%; min-width: 350px;}
+
 .product-card { 
   display: block;
   border-radius: 8px;
   color: white;
-  width: 200px;
+  width: 100%;
+  
   margin-bottom: 10px;
+  
   img {
     width: 100%;
   }
@@ -31,15 +36,18 @@
       padding: 0px 5px;
     }
     
-    .product-price {
-      background-color: rgba(80, 80, 80, 0.71);
-      color: white;
+    .product-status {
+      margin-right: 10px;
     }
   }
 }
 
 .product-details {
   .categories {
-    margin-right: 36px; 
+    margin-right: 36px;
+   
+    .category.label {
+      font-weight: 600;
+    } 
   }
 }

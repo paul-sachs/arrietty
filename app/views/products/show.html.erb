@@ -1,5 +1,7 @@
 <div class='product-details'>
   <span class='categories float-right'>
+    <span class='category label <%=status_classes(@product)%>'><%=@product.status.titleize%></span>
+    
     <% if @product.category != nil %>
     <span class='category label'><%=@product.category.name%></span>
     <% end %>
@@ -9,10 +11,12 @@
     <%= @product.name %>
   </h1>
   <div><small>Owner: <%= @product.user.display_name %></small><div>
+  <% if @product.status.to_sym == :available and not current_user.owns?(@product)%>
   <div class='actions float-right'>
     <%= link_to 'Contact Owner', contact_owner_form_path(@product), class: 'button'%>
   </div>
-
+  <% end %>
+  
   <%= image_tag @product.image.url(:medium) %>
   
   <div>

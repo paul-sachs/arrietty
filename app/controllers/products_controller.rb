@@ -13,6 +13,11 @@ class ProductsController < ApplicationController
 
   
   def contact
+    if @product.status.to_sym != :available
+      flash[:alert] = 'Cannot contact owner'
+      redirect_to root_path
+    end 
+    
     ProductMailer.contact_email(@product, params[:body]).deliver_now
 
     flash[:notice] = "Request Sent!"
@@ -67,7 +72,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :category_id, :price, :image, :description)
+      params.require(:product).permit(:name, :category_id, :price, :image, :description, :status)
     end
     
     def check_edit_permission!

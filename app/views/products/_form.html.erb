@@ -31,7 +31,12 @@
 
   <div>
   <%= f.label :description %>
-  <%= f.text_area :description, class: "form-control" %><br />
+  <%= f.text_area :description, class: "form-control" %>
+  </div>
+  
+  <div>
+  <%= f.label :status %>
+  <%= f.select(:status, Product.statuses.keys.map {|status| [status.titleize,status]}) %>
   </div>
 
   <div class='actions float-right'>
