@@ -3,10 +3,12 @@
 
 <%= form_for @user.preference, html: { multipart: true }, url: preference_path do |f| %>
 
-<div class="field">
-   <%= f.label :image, class: 'button' %>
-   <%= f.file_field :image, 'class'=>'show-for-sr' %>
+<div class="field image-uploader">
    <%= image_tag @user.preference.image.url(:medium), 'id'=>'image-preview'%>
+
+    <%= f.label :image, class: 'button' %>
+    <%= f.file_field :image, 'class'=>'show-for-sr' %>
+
  </div>
 
 <div class="input-group">

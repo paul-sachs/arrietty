@@ -29,6 +29,9 @@ gem 'rails_12factor'
 
 gem 'jquery-form-rails'
 
+gem 'aws-sdk', '< 2.0'
+
+
 group :development do
   gem 'sqlite3'
 end

@@ -61,7 +61,6 @@ body {
   padding-bottom: 0px; 
 }
 
-<<<<<<< Updated upstream
 i.success {
   color: map-get($foundation-palette, success);
 }
@@ -72,7 +71,8 @@ i.alert {
 
 i.warning {
   color: map-get($foundation-palette, warning);
-=======
+}
+
 #add-product-link {
   font-size: x-large; 
   padding-left: 4px; 
@@ -80,5 +80,19 @@ i.warning {
   padding-top: 4px; 
   padding-right: 0px;
   margin-right: -5px;
->>>>>>> Stashed changes
+}
+
+
+.image-uploader {
+  display: flex;
+  flex-direction: column;
+  
+  #image-preview {
+    width: 250px;
+  }
+  
+  .button {
+    width: 250px;
+    max-width: 100%;
+  }
 }

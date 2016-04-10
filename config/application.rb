@@ -34,5 +34,16 @@ module Arrietty
       password: ENV['SMTP_PASSWORD'], # SMTP password is any valid API key
       authentication: 'login', # Mailgun supports 'plain' or 'login'
     }
+   
+    config.paperclip_defaults = {
+      storage: :s3,
+      s3_credentials: {
+        access_key_id: ENV["S3_ACCESS_KEY_ID"],
+        secret_access_key: ENV["S3_ACCESS_KEY_SECRET"],
+        bucket: "hackeryou-arrietty"
+      },
+      :url =>':s3_domain_url',
+      :path => '/:class/:attachment/:id_partition/:style/:filename'
+    }
   end
 end
