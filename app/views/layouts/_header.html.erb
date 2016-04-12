@@ -16,20 +16,26 @@
       
         <%= form_tag root_path, method: "GET" do%>
           <ul class="menu">
+          <% if params[:action] != 'my_products' %>
             <li><%= text_field_tag :q, params[:q], placeholder: 'Search for items', type: 'search' %></li>
             <li><%= submit_tag "Search", class: "button hollow" %></li>
           </ul>
+        <% end %>
         <% end %>
       
     </div>
     <div class="top-bar-right">
       <ul class="dropdown menu" data-dropdown-menu>
         <% if user_signed_in? %>
-        <li>
-        <%= link_to new_product_path, remote: true, id: 'add-product-link', class: 'product-dialog-submit'  do %>
-          <i class="fi-plus" id="header-icon"></i>
+        <% if params[:controller] == 'products' %>
+          <li>
+          <%= link_to new_product_path, remote: true, id: 'add-product-link', class: 'product-dialog-submit'  do %>
+            <i class="fi-plus" id="header-icon"></i>
+          
+          <% end %>
+          </li>
         <% end %>
-        </li>
+
         <li><%= link_to "My Stuff", "/my_products" %></li>
         <li class='profile-parent-menu'>
       
