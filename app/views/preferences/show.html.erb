@@ -1,3 +1,9 @@
+<% content_for :head do %>      
+  <%= javascript_include_tag 'preferences' %>
+  <%= stylesheet_link_tag    'preferences' %>
+<% end %>
+
+
 <h1>Preferences</h1>
 
 
@@ -40,7 +46,10 @@
 <div class="input-group">
   <%= f.label :location, class: 'input-group-label' %>
   <%= f.text_field :location, class: 'input-group-field' %>
-  <div class="input-group-button">
+</div>
+<div class="hidden">
+  <input id="map-input" class="map-controls" type="text" placeholder="Enter your location">
+  <div id="map-locate-me" class="map-controls" >
     <input id='locateMeButton' type="button" class="button" value="Locate Me"/>
     <div id='loader' type="button" class='button hidden'>
       <div>
@@ -48,53 +57,13 @@
       </div>
     </div>
   </div>
-
-
 </div>
+<div id="map"></div>
 
-        
-
-<script>
-  $(function () {
-    $('#locateMeButton').on('click', locateMe);
-  });
-  
-  function locateMe(event) {
-    event.preventDefault();
-    $('#loader').removeClass('hidden').addClass('loading');
-    $('#locateMeButton').addClass('hidden');
-    navigator.geolocation.getCurrentPosition(function (pos) {
-      $.ajax('/locate_me', {
-          async: true,
-          data: {
-            position: pos
-          },
-          method: 'GET',
-          dataType: 'json'
-        })
-        .done(function(result) {
-          $('#preference_location').val(result.country+", "+result.city+", "+result.neighborhood);
-        }).always(function(){
-          $('#loader').addClass('hidden').removeClass('loading');
-          $('#locateMeButton').removeClass('hidden');
-        });
-    }, null, null);
-  }
-
-$(function() {
-    $('#preference_image').on('change', function(event) {
-      var files = event.target.files;
-      var image = files[0]
-      var reader = new FileReader();
-      reader.onload = function(file) {
-        $('#image-preview').attr('src',file.target.result);
-      }
-      reader.readAsDataURL(image);
-      console.log(files);
-    });
-  });
-
-</script>
   <%= f.submit class: "button" %>
 </div>
 <% end %>
+
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap"
+        async defer></script>
+
