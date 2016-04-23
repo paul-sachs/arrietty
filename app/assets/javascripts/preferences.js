@@ -1,12 +1,13 @@
 var marker = null,
     position = null,
-    map = null;
-    
+    map = null,
+    geocoder = null;
 $(function () {
   $('#locateMeButton').on('click', locateMe);
 });
 
 function initMap() {
+  geocoder = new google.maps.Geocoder();
   var myLatLng = {lat: 43.6532, lng: -79.3832};
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 4,
@@ -42,7 +43,22 @@ function initMap() {
     }
     marker.setPosition(place.geometry.location);
   });
-  locateMe();
+  var savedLocation = $('#map-input').val();
+  if(savedLocation.length > 0){
+    geocoder.geocode( { 'address': savedLocation}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        map.fitBounds(results[0].geometry.viewport);
+        marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      }
+    });
+  }
+  else {
+    locateMe();
+  }
 }
 
 function handleLocationError(browserHasGeolocation, pos) {
@@ -75,33 +91,12 @@ function locationFound(pos) {
   marker.setPosition(pos);
   map.setZoom(14);
   map.setCenter(pos);
+  geocoder.geocode({'location': pos}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK && results[1]) {
+      $('#map-input').val(results[1].formatted_address);
+    }
+  });
 }
-
-// function locateMe(event) {
-//   if (event) event.preventDefault();
-//   $('#loader').removeClass('hidden').addClass('loading');
-//   $('#locateMeButton').addClass('hidden');
-//   navigator.geolocation.getCurrentPosition(function (pos) {
-//     position = pos;
-//     $.ajax('/locate_me', {
-//         async: true,
-//         data: {
-//           position: pos
-//         },
-//         method: 'GET',
-//         dataType: 'json'
-//       })
-//       .done(function(result) {
-//         var googlePos = {lat: position.coords.latitude, lng: position.coords.longitude};
-//         locationFound(googlePos);
-//         $('#preference_location').val(result.country+", "+result.city+", "+result.neighborhood);
-//       }).always(function(){
-//         $('#loader').addClass('hidden').removeClass('loading');
-//         $('#locateMeButton').removeClass('hidden');
-//       });
-//   }, null, null);
-// }
-
 
 $(function() {
   $('#preference_image').on('change', function(event) {

@@ -45,10 +45,9 @@
 
 <div class="input-group">
   <%= f.label :location, class: 'input-group-label' %>
-  <%= f.text_field :location, class: 'input-group-field' %>
 </div>
 <div class="hidden">
-  <input id="map-input" class="map-controls" type="text" placeholder="Enter your location">
+  <%= f.text_field :location, class: 'input-group-field map-controls', id: 'map-input', placeholder: 'Enter your location' %>
   <div id="map-locate-me" class="map-controls" >
     <input id='locateMeButton' type="button" class="button" value="Locate Me"/>
     <div id='loader' type="button" class='button hidden'>
