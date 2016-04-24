@@ -7,7 +7,9 @@ class PreferencesController < ApplicationController
   end
   
   def update
-    
+    lat = params[:latitude]
+    lng = params[:longitude]
+    current_user.user_location = UserLocation.create( lat: lat, lng: lng)
     current_user.preference.update(preference_params)
 
     respond_to do |format|

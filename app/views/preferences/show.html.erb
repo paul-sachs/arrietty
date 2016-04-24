@@ -41,7 +41,9 @@
   <%= f.label :about_me %>
   <%= f.text_area :about_me, class: "form-control" %><br />
 </div>
- 
+
+<input type="hidden" id="latitude" name="latitude"/>
+<input type="hidden" id="longitude" name="longitude"/>
 
 <div class="input-group">
   <%= f.label :location, class: 'input-group-label' %>
@@ -59,7 +61,7 @@
 </div>
 <div id="map"></div>
 
-  <%= f.submit class: "button" %>
+  <%= f.submit class: "button", id: "updatepreferences" %>
 </div>
 <% end %>
 

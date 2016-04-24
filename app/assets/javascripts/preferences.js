@@ -4,7 +4,9 @@ var marker = null,
     geocoder = null;
 $(function () {
   $('#locateMeButton').on('click', locateMe);
+  $('#updatepreferences').on('click', submitForm);
 });
+
 
 function initMap() {
   geocoder = new google.maps.Geocoder();
@@ -110,3 +112,18 @@ $(function() {
     console.log(files);
   });
 });
+
+function submitForm(event) {
+  if (marker == null) {
+    event.preventDefault();
+    alert("Please set location");
+  }
+  else {
+    var position = marker.getPosition();
+    var lat = position.lat();
+    var lng = position.lng();
+    
+    $('#latitude').val(lat);
+    $('#longitude').val(lng);
+  }
+}
