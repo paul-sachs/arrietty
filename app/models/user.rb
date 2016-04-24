@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :products
   has_one :user_location
+  alias_attribute :location, :user_location
+  
   has_one :preference
   after_create :create_preference
   
