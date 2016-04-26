@@ -20,14 +20,14 @@ ActiveRecord::Schema.define(version: 20160424001730) do
   end
 
   create_table "preferences", force: :cascade do |t|
-    t.text     "about_me",              default: ""
-    t.string   "location",              default: ""
-    t.string   "email",                 default: ""
-    t.boolean  "notification_message",  default: true
-    t.boolean  "notification_interest", default: true
+    t.text     "about_me"
+    t.string   "location"
+    t.string   "email"
+    t.boolean  "notification_message"
+    t.boolean  "notification_interest"
     t.integer  "user_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
