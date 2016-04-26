@@ -21,4 +21,18 @@ module ProductsHelper
         'fi-clock warning'
     end
   end
+
+  def get_distance_display_for(product)
+    distance = product.distance_to(current_user)
+    if distance <= 1
+      "< 1km"
+    elsif distance <= 3
+      "< 3km"
+    elsif distance <= 5
+      "< 5km"
+    else
+      "< #{distance.round(-1)}km"
+        
+    end
+  end
 end

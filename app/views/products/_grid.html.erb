@@ -15,6 +15,8 @@
         <div class="product-card">
           <div class="product-info-container">
             <div class="product-name"><%= product.name %></div>
+            <div class="product-distance"><%= get_distance_display_for(product) %>
+            </div>
             <i class="product-status <%= status_icon_classes(product)%>"></i>
           </div>
           <%= image_tag product.image.url(:medium) %>

@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
   end
 
   
+  
   def contact
     if @product.status.to_sym != :available
       flash[:alert] = 'Cannot contact owner'
