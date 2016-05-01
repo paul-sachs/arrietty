@@ -20,6 +20,6 @@ class Product < ActiveRecord::Base
   end
   
   def distance_to(user)
-    user.location.distance_from(location)
+    user.location.distance_from(location, :units => :kms)
   end
 end
