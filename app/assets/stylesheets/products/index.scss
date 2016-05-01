@@ -50,8 +50,16 @@
       padding: 0px 5px;
     }
     
-    .product-status {
-      margin-right: 10px;
+    &.unavailable .product-name, &.unavailable .product-distance {
+      background-color: rgba(144, 38, 38, 0.71);
+    }
+    
+     &.available .product-name, &.available .product-distance {
+      background-color: rgba(48, 146, 42, 0.71);
+    }
+    
+     &.rented .product-name, &.rented .product-distance {
+      background-color: rgba(165, 150, 36, 0.71);
     }
   }
 }
