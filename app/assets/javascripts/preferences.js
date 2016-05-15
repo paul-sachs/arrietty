@@ -109,7 +109,6 @@ $(function() {
       $('#image-preview').attr('src',file.target.result);
     }
     reader.readAsDataURL(image);
-    console.log(files);
   });
 });
 

@@ -45,9 +45,8 @@
 <input type="hidden" id="latitude" name="latitude"/>
 <input type="hidden" id="longitude" name="longitude"/>
 
-<div class="input-group">
-  <%= f.label :location, class: 'input-group-label' %>
-</div>
+
+
 <div class="hidden">
   <%= f.text_field :location, class: 'input-group-field map-controls', id: 'map-input', placeholder: 'Enter your location' %>
   <div id="map-locate-me" class="map-controls" >
@@ -59,8 +58,10 @@
     </div>
   </div>
 </div>
-<div id="map"></div>
-
+<%= f.label :location, class: 'input-group-label' %>
+<div class='input-group'>
+  <div id="map"></div>
+</div>
   <%= f.submit class: "button", id: "updatepreferences" %>
 </div>
 <% end %>

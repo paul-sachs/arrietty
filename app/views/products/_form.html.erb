@@ -10,11 +10,13 @@
       </ul>
     </div>
   <% end %>
- <div class="field">
-   <%= image_tag @product.image.url, 'id'=>'image-preview', 'class'=>'img-responsive' %>
-   <%= f.file_field :image, 'id'=>'image-input' %>
- </div>
+ <div class="field image-uploader">
+   <%= image_tag @product.image.url, 'id'=>'image-preview'%>
 
+    <%= f.label :image, class: 'button' %>
+    <%= f.file_field :image, 'class'=>'show-for-sr' %>
+
+ </div>
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -51,7 +53,7 @@
 
 <script>
   $(function() {
-    $('#image-input').on('change', function(event) {
+    $('#product_image').on('change', function(event) {
       var files = event.target.files;
       var image = files[0]
       var reader = new FileReader();
@@ -59,7 +61,6 @@
         $('#image-preview').attr('src',file.target.result);
       }
       reader.readAsDataURL(image);
-      console.log(files);
     });
     
     $('#product_edit_form').ajaxForm({
